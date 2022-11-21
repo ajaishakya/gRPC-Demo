@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example";
+option java_outer_classname = "Movie";
+option objc_class_prefix = "HLW";
+
+package com.example;
+
+service MovieService {
+  rpc send (GenreRequest) returns (stream MovieReply) {}
+}
+
+message GenreRequest {
+  string Genre = 1;
+}
+
+message MovieReply {
+  repeated MovieDetail movie_detail = 1;
+  string extra = 2;
+}
+
+message MovieDetail {
+  string name = 1;
+  string description = 2;
+}
